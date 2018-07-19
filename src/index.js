@@ -11,13 +11,15 @@ const {getMovies} = require('./api.js');
 
 const showMovies = () => {
 
-    let output = '';
+    let bodyOutput = '', dropdownOutput = `<option selected>Select a movie...</option>`;
     getMovies().then(res => {
         res.forEach(movie => {
-            output += `<li>"${movie.title}"
+            bodyOutput += `<li>"${movie.title}"
   Rating: ${movie.rating}</li>`;
+            dropdownOutput += `<option value="${movie.id}">${movie.title}</option>`
         });
-        $('.movie-list').html(output);
+        $('.movie-list').html(bodyOutput);
+        $('.dropdown').html(dropdownOutput);
     });
 };
 
@@ -37,8 +39,9 @@ $(document).ready(() => {
 
 
 
-    $('#submit').click(e => {
-        const newMovie = { title: $('#moviesInput').val(), rating: $('#ratingsInput').val() };
+    // Adds new movie
+    $('#submit').click( () => {
+        const newMovie = { title: $('#moviesInput').val(), rating: $('input:radio[name=ratingInput]:checked').val() };
         const url = '/api/movies';
         const options = {
             method: 'POST',
@@ -51,6 +54,28 @@ $(document).ready(() => {
         fetch(url, options)
             .then(showMovies)
             .then(() => console.log('SUCCESS'));
+    });
+
+
+
+    // Edits existing movie
+    $('#editSubmit').click( () => {
+      const id = $('select > option:selected').val();
+        console.log(id);
+        const editMovie = { title: $('#editMoviesInput').val(), rating: $('input:radio[name=editRatingInput]:checked').val() };
+      let url = `/api/movies/${id}`;
+        console.log(url);
+        const options = {
+          method: 'PATCH',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(editMovie)
+      };
+
+      fetch(url, options)
+          .then(showMovies);
+
     });
 
 
