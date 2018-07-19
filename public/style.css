@@ -4,7 +4,13 @@ html, body {
 
 .container {
     position: relative;
-    top: 50%;
-    transform: translateY(-100%);
     text-align: center;
+}
+
+.movielist-row {
+    height: 150px;
+}
+
+.movie-list li {
+    list-style: none;
 }
