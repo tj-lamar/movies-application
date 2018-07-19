@@ -11,15 +11,15 @@ const {getMovies} = require('./api.js');
 
 const showMovies = () => {
 
-    let bodyOutput = '', dropdownOutput = '';
+    let bodyOutput = '', dropdownOutput = `<option selected>Select a movie...</option>`;
     getMovies().then(res => {
         res.forEach(movie => {
             bodyOutput += `<li>"${movie.title}"
   Rating: ${movie.rating}</li>`;
-            dropdownOutput += `<li class="dropdown-item">${movie.title}</li>`
+            dropdownOutput += `<option value="${movie.id}">${movie.title}</option>`
         });
         $('.movie-list').html(bodyOutput);
-        $('.dropdown-menu').html(dropdownOutput);
+        $('.dropdown').html(dropdownOutput);
     });
 };
 
@@ -59,12 +59,11 @@ $(document).ready(() => {
 
 
     // Edits existing movie
-    $('#editSubmit').click( (e) => {
-      e.preventDefault();
-      let id = $('.dropdown-menu').val();
+    $('#editSubmit').click( () => {
+      const id = $('select > option:selected').val();
         console.log(id);
         const editMovie = { title: $('#editMoviesInput').val(), rating: $('input:radio[name=editRatingInput]:checked').val() };
-      const url = `/api/movies/${id}`;
+      let url = `/api/movies/${id}`;
         console.log(url);
         const options = {
           method: 'PATCH',
