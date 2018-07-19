@@ -73,6 +73,13 @@ $(document).ready(() => {
           body: JSON.stringify(editMovie)
       };
 
+        $('.dropdown').change(function() {
+          let selected = (this).find('option:selected');
+          let title = selected.data('title');
+          let titleField = $('#editMoviesInput')
+          titleField.value = title.options[title.selectedIndex].value;
+        });
+
       fetch(url, options)
           .then(showMovies);
 
