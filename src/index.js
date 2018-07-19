@@ -22,8 +22,15 @@ getMovies().then((movies) => {
 
 $(document).ready(() => {
 
-  $('.container').html('Loading...');
+  $('.movie-list').html('Loading...');
 
-  getMovies().then(res => console.log(res));
+  let output = '';
+  getMovies().then(res => {
+    res.forEach(movie => {
+      output += `<li>"${movie.title}"
+      Rating: ${movie.rating}</li>`
+    });
+     $('.movie-list').html(output);
+  });
 
 });
