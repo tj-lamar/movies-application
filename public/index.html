@@ -10,34 +10,125 @@
 
 <div class="container">
 
+    <!--Current List of Movies-->
+
     <div class="row">
         <div class="col-12 movielist-row d-flex align-items-center justify-content-center">
             <ul class="movie-list pl-0"></ul>
         </div>
     </div>
 
-    <div class="jumbotron">
 
-        <h3>Movie Title and Ratings</h3>
-        <form id="titleRatings">
-            <input type="text" class="form-control" id="moviesInput" placeholder="Movies...">
-            <input type="text" class="form-control" id="ratingsInput" placeholder="Ratings...">
+    <!--Add a new movie-->
+
+    <div class="jumbotron">
+        <h3>Add a Movie:</h3>
+        <form>
+            <div class="form-group row">
+                <label for="moviesInput" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="moviesInput" placeholder="Title">
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Rating</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating1" value="1">
+                            <label class="form-check-label" for="addRating1">
+                                1
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating2" value="2">
+                            <label class="form-check-label" for="addRating2">
+                                2
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating3" value="3">
+                            <label class="form-check-label" for="addRating3">
+                                3
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating4" value="4">
+                            <label class="form-check-label" for="addRating4">
+                                4
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating5" value="5">
+                            <label class="form-check-label" for="addRating5">
+                                5
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
             <button id="submit" class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
-    <h3>Edit Movie</h3>
-    <form id="newMovies">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select A Movie
-            </button>
-            <div id="MovieMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
+
+    <!--Edit an existing movie-->
+
+    <div class="jumbotron">
+        <h3>Edit a Movie:</h3>
+        <form>
+            <div class="dropdown text-left mb-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select a Movie...
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"></ul>
             </div>
-        </div>
-        <input type="text" class="form-control" id="editTitle" placeholder="Title...">
-        <input type="text" class="form-control" id="editRating" placeholder="Ratings...">
-    </form>
+            <div class="form-group row">
+                <label for="editMoviesInput" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="editMoviesInput" placeholder="Title">
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Rating</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating1" value="1">
+                            <label class="form-check-label" for="editRating1">
+                                1
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating2" value="2">
+                            <label class="form-check-label" for="editRating2">
+                                2
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating3" value="3">
+                            <label class="form-check-label" for="editRating3">
+                                3
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating4" value="4">
+                            <label class="form-check-label" for="editRating4">
+                                4
+                            </label>
+                        </div>
+                        <div class="form-check-inline mx-3 text-left">
+                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating5" value="5">
+                            <label class="form-check-label" for="editRating5">
+                                5
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <button id="editSubmit" class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
 
 </div>
 
