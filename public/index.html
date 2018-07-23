@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8" />
     <title>My Application</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-dc511usETkt5R6evFzyWPo3GCQkG+8t+K2KZ9TUeGbisOmqJGXf4j8fLCRoK9r1N" crossorigin="anonymous">"
-    <link rel="stylesheet" href="/style.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-dc511usETkt5R6evFzyWPo3GCQkG+8t+K2KZ9TUeGbisOmqJGXf4j8fLCRoK9r1N" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+<div id="loading">
+    <div class="sk-circle"></div>
+    <div class="spinner">
+        <div class="rect1">Loading</div>
+        <div class="rect2">Loading</div>
+        <div class="rect3">Loading</div>
+        <div class="rect4">Loading</div>
+        <div class="rect5">Load</div>
+    </div>
+</div>
+
+
+<div id="carouselSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-75" src="https://images-na.ssl-images-amazon.com/images/I/A1t8xCe9jwL._SY679_.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-75" src="https://uproxx.files.wordpress.com/2018/01/honest-movie-posters-2018-star-wars-the-last-jedi_college-humor.jpg?quality=95&w=650&h=959" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-75" src="http://img.moviepostershop.com/the-hangover-movie-poster-2009-1020488737.jpg" alt="Third slide">
+        </div>
+    </div>
+</div>
 <div class="container">
 
-    <!--Current List of Movies-->
+   <!--// Current List of Movies-->
 
     <div class="row">
-        <div class="col-12 movielist-row d-flex align-items-center justify-content-center">
+        <div class="col-3 movielist-row d-flex align-items-center justify-content-center">
             <ul class="movie-list pl-0"></ul>
         </div>
     </div>
@@ -130,7 +155,6 @@
     </div>
 
 </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
