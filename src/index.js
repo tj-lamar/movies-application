@@ -11,36 +11,53 @@ const {getMovies, getMoviePoster} = require('./api.js');
 
 const showMovies = () => {
 
+    $('.loading-modal').show();
+
     let carouselOutput = '', carouselTicker = '', dropdownOutput = `<option selected>Select a movie...</option>`;
 
-    $('.carousel-inner').html(`<div class="carousel-item active">
-                                <div style="background-color: black; width: 1100px; height: 500px"></div>
-                                </div>`);
     $('.carousel-indicators').html(`<li data-target="#demo" data-slide-to="0" class="active"></li>`);
     $('.dropdown').html(`<option selected>Select a movie...</option>`);
 
     getMovies().then(res => {
+        $('.carousel-inner').html(`<div class="carousel-item active"><img class="d-block w-80" id="movies-title" src="./movie-title-poster.png" alt=""></div>`);
+        $('.loading-modal').hide();
         res.forEach(movie => {
             getMoviePoster(movie.title).then(res => {
                 carouselTicker = '';
                 carouselOutput = '';
                 dropdownOutput = '';
                 let posterURL = res.Search[0].Poster;
-  //                     carouselOutput += `<li>"${movie.title}"
-  // Rating: ${movie.rating}</li>`;
-  //               carouselOutput += `<li><img class="d-block w-100" src="${posterURL}" alt="${movie.title}"></li>`;
+
+                // HTML containing info for each movie
                 carouselOutput +=
                     `<div class="carousel-item">
                      <img class="d-block w-80" src="${posterURL}" alt="${movie.title}">
-                     <div class="carousel-caption d-block">
+                     <div class="carousel-caption d-block" id="${movie.id}">
+                     <button id="delete-btn-${movie.id}" type="button" class="btn delete-movie-btn d-flex justify-content-center">
+                     <i class="fas fa-times fa-xs"></i></button>
                      <h5 class="movie-title">${movie.title}</h5>
                      ${countStars(movie.rating)}
                      </div></div>`;
                 carouselTicker += `<li data-target="#demo" data-slide-to="${movie.id}"></li>`;
+
+                // HTML for Edit Movie dropdown menu
                 dropdownOutput += `<option value="${movie.id}">${movie.title}</option>`;
                 $('.carousel-inner').append(carouselOutput);
                 $('.carousel-indicators').append(carouselTicker);
                 $('.dropdown').append(dropdownOutput);
+
+                // Deletes movie
+                $(`#delete-btn-${movie.id}`).click( () => {
+                    let url = `/api/movies/${movie.id}`;
+                    let options = {
+                        method: 'DELETE'
+                    };
+                    let userConfirm = confirm(`Are you sure you wish to delete "${movie.title}"?`);
+                        if (userConfirm) {
+                            fetch(url, options)
+                                .then(showMovies);
+                        }
+                });
             }).catch(e => console.log(e));
         });
     });
@@ -59,7 +76,7 @@ const countStars = rating => {
 
 $(document).ready(() => {
 
-    $('.carousel-inner').text('Loading...');
+    // $('.carousel-inner').addClass('loading-modal');
 
     getMovies().then((movies) => {
         console.log('Here are all the movies:');
@@ -94,7 +111,7 @@ $(document).ready(() => {
 
     // Edits existing movie
     $('#editSubmit').click( () => {
-      const id = $('select > option:selected').val();
+      let id = $('select > option:selected').val();
         console.log(id);
         const editMovie = { title: $('#editMoviesInput').val(), rating: $('input:radio[name=editRatingInput]:checked').val() };
       let url = `/api/movies/${id}`;

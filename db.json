@@ -1,24 +1,14 @@
 {
   "movies": [
     {
-      "title": "Casablanca",
-      "rating": "4",
+      "title": "Gone With The Wind",
+      "rating": "2",
       "id": 1
-    },
-    {
-      "title": "Star Wars: The Phantom Menace",
-      "rating": "1",
-      "id": 2
     },
     {
       "title": "Forrest Gump",
       "rating": "5",
       "id": 3
-    },
-    {
-      "title": "Die Hard",
-      "rating": "4",
-      "id": 4
     }
   ]
 }

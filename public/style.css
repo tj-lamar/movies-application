@@ -33,6 +33,7 @@ button.btn.btn-primary {
     position: relative;
 }
 
+
 .carousel-inner div {
     background-color: rgba(42,42,42,0.75);
 }
@@ -57,10 +58,36 @@ button.btn.btn-primary {
     color: #fff519;
 }
 
+.btn.delete-movie-btn.d-flex.justify-content-center {
+    background: transparent;
+    border: 2px;
+    border-radius: 3px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: -4px;
+}
+
+.btn.delete-movie-btn.d-flex.justify-content-center:hover {
+    color: #d00002;
+}
+
 .movielist-row {
     height: 150px;
 }
 
 .movie-list li {
     list-style: none;
+}
+
+.loading-modal {
+    position: absolute;
+    top: 347px;
+    left: 42%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    background: url("./ajax-loader.gif");
+    background-size: cover;
+    display: none;
 }
