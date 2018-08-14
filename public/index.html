@@ -4,130 +4,208 @@
     <meta charset="UTF-8" />
     <title>My Application</title>
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-dc511usETkt5R6evFzyWPo3GCQkG+8t+K2KZ9TUeGbisOmqJGXf4j8fLCRoK9r1N" crossorigin="anonymous">"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
+
+    <!--Navbar-->
+
+    <nav class="navbar navbar-expand navbar-dark">
+        <a class="navbar-brand" href="#"><span class="logo-letter">m</span>ovie<span class="logo-letter">l</span>ister</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-auto" id="navbarText">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-3"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+                    Add Movie
+                </button></li>
+                <li class="nav-item mx-3"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+                    Edit Movie
+                </button></li>
+            </ul>
+        </div>
+    </nav>
 
     <!--Current List of Movies-->
 
-    <div class="row">
-        <div class="col-12 movielist-row d-flex align-items-center justify-content-center">
-            <ul class="movie-list pl-0"></ul>
+    <div class="row my-5">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div id="demo" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators"></ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner"></div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
         </div>
+        <div class="col-1"></div>
     </div>
 
 
     <!--Add a new movie-->
 
-    <div class="jumbotron">
-        <h3>Add a Movie:</h3>
-        <form>
-            <div class="form-group row">
-                <label for="moviesInput" class="col-sm-2 col-form-label">Title</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="moviesInput" placeholder="Title">
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="addLabel">Add Movie: </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <fieldset class="form-group">
-                <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Rating</legend>
-                    <div class="col-sm-10">
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating1" value="1">
-                            <label class="form-check-label" for="addRating1">
-                                1
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating2" value="2">
-                            <label class="form-check-label" for="addRating2">
-                                2
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating3" value="3">
-                            <label class="form-check-label" for="addRating3">
-                                3
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating4" value="4">
-                            <label class="form-check-label" for="addRating4">
-                                4
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="ratingInput" id="addRating5" value="5">
-                            <label class="form-check-label" for="addRating5">
-                                5
-                            </label>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="moviesInput" class="col-sm-2 col-form-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="moviesInput" placeholder="Title">
+                                    </div>
+                                </div>
+                                <fieldset class="form-group">
+                                    <div class="row">
+                                        <legend class="col-form-label col-sm-2 pt-0">Ratings</legend>
+                                        <div class="col-sm-10">
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="ratingInput" id="addRating1" value="1" checked>
+                                                <label class="form-check-label" for="addRating1">
+                                                    1
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="ratingInput" id="addRating2" value="2">
+                                                <label class="form-check-label" for="addRating2">
+                                                    2
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="ratingInput" id="addRating3" value="3">
+                                                <label class="form-check-label" for="addRating3">
+                                                    3
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="ratingInput" id="addRating4" value="4">
+                                                <label class="form-check-label" for="addRating4">
+                                                    4
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="ratingInput" id="addRating5" value="5">
+                                                <label class="form-check-label" for="addRating5">
+                                                    5
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!--<button id="submit" class="btn btn-primary" type="submit">Submit</button>-->
+                            </form>
                         </div>
                     </div>
                 </div>
-            </fieldset>
-            <button id="submit" class="btn btn-primary" type="submit">Submit</button>
-        </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="submit" class="btn btn-secondary" type="submit" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 
     <!--Edit an existing movie-->
 
-    <div class="jumbotron">
-        <h3>Edit a Movie:</h3>
-        <form>
-            <select class="dropdown text-left mb-3">
-                <option selected>Select a movie...</option>
-            </select>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"></ul>
-            </select>
-            <div class="form-group row">
-                <label for="editMoviesInput" class="col-sm-2 col-form-label">Title</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="editMoviesInput" placeholder="Title">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="editLabel">Edit a Movie:</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <fieldset class="form-group">
-                <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Rating</legend>
-                    <div class="col-sm-10">
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating1" value="1">
-                            <label class="form-check-label" for="editRating1">
-                                1
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating2" value="2">
-                            <label class="form-check-label" for="editRating2">
-                                2
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating3" value="3">
-                            <label class="form-check-label" for="editRating3">
-                                3
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating4" value="4">
-                            <label class="form-check-label" for="editRating4">
-                                4
-                            </label>
-                        </div>
-                        <div class="form-check-inline mx-3 text-left">
-                            <input class="form-check-input" type="radio" name="editRatingInput" id="editRating5" value="5">
-                            <label class="form-check-label" for="editRating5">
-                                5
-                            </label>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form>
+                                <select class="dropdown text-left mb-3">
+                                    <option selected>Select a movie...</option>
+                                </select>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"></ul>
+                                </select>
+                                <div class="form-group row">
+                                    <label for="editMoviesInput" class="col-sm-2 col-form-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="editMoviesInput" placeholder="Title">
+                                    </div>
+                                </div>
+                                <fieldset class="form-group">
+                                    <div class="row">
+                                        <legend class="col-form-label col-sm-2 pt-0">Rating</legend>
+                                        <div class="col-sm-10">
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="editRatingInput" id="editRating1" value="1">
+                                                <label class="form-check-label" for="editRating1">
+                                                    1
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="editRatingInput" id="editRating2" value="2">
+                                                <label class="form-check-label" for="editRating2">
+                                                    2
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="editRatingInput" id="editRating3" value="3">
+                                                <label class="form-check-label" for="editRating3">
+                                                    3
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="editRatingInput" id="editRating4" value="4">
+                                                <label class="form-check-label" for="editRating4">
+                                                    4
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline mx-3 text-left">
+                                                <input class="form-check-input" type="radio" name="editRatingInput" id="editRating5" value="5">
+                                                <label class="form-check-label" for="editRating5">
+                                                    5
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </fieldset>
-            <button id="editSubmit" class="btn btn-primary" type="submit">Submit</button>
-        </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="editSubmit" class="btn btn-secondary" type="submit" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 
 </div>
 

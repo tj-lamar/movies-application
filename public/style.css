@@ -1,10 +1,60 @@
 html, body {
     height: 100%;
+    background: linear-gradient(
+                    rgba(0, 0, 0, 0.9),
+                    rgba(0, 0, 0, 0.9)),
+                    url('./auditorium-chairs-comfortable-269140.jpg');
+    );
+    background-size: cover;
+}
+
+button.btn.btn-primary {
+    background: transparent;
 }
 
 .container {
     position: relative;
     text-align: center;
+}
+
+.navbar .navbar-brand {
+    letter-spacing: 8px;
+    font-family: AppleGothic, sans-serif;
+    font-size: 22px
+}
+
+.logo-letter {
+    color: #a10002;
+}
+
+.carousel {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.carousel-inner div {
+    background-color: rgba(42,42,42,0.75);
+}
+
+.carousel-inner div img {
+    height: 500px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.carousel-caption.d-block {
+    box-shadow: 3px 3px 6px black;
+    background: rgba(58,0,2,0.75);
+}
+
+.stars {
+    display: inline-block;
+    z-index: 999;
+}
+
+.stars i {
+    color: #fff519;
 }
 
 .movielist-row {
